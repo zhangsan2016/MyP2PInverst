@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></FrameLayout>
+
+
+    <!--RadioGroup-->
+    <RadioGroup
+        android:id="@+id/rg_bottom_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#11000000"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_home"
+            style="@style/botttom_tag_style"
+            android:drawableTop="@drawable/rb_home_drawable_selector"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/rb_invest"
+            style="@style/botttom_tag_style"
+            android:drawableTop="@drawable/rb_invest_drawable_selector"
+            android:text="投资" />
+
+        <RadioButton
+            android:id="@+id/rb_me"
+            style="@style/botttom_tag_style"
+            android:textColor="@drawable/rb_meview_textcolor_selector"
+            android:drawableTop="@drawable/rb_me_drawable_selector"
+            android:text="我的资产" />
+
+
+        <RadioButton
+            android:id="@+id/rb_more"
+            style="@style/botttom_tag_style"
+            android:drawableTop="@drawable/rb_more_drawable_selectr"
+            android:text="更多" />
+
+    </RadioGroup>
+
+</LinearLayout>
