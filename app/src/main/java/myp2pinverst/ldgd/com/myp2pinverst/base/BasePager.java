@@ -31,5 +31,6 @@ public abstract class BasePager extends Fragment {
     /*
        子类根据需要实现
      */
-    public void initData(){};
+    public void initData(){
+    };
 }

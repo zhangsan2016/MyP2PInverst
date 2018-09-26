@@ -5,8 +5,10 @@ package myp2pinverst.ldgd.com.myp2pinverst.common;
  * 配置网络请求相关的地址
  */
 public class AppNetConfig {
-
-    public static final String IPADDRESS = "192.168.191.1";
+     // http://192.168.1.157:8080/P2PInvest/index
+    //  http://127.0.0.0.1:8080/P2PInvest/index
+    //  http://192.168.1.157:8080/P2PInvest/index
+    public static final String IPADDRESS = "192.168.1.157";
 
     public static final String BASE_URL = "http://" + IPADDRESS + ":8080/P2PInvest/";
 
