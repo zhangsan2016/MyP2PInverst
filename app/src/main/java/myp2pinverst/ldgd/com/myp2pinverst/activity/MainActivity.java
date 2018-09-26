@@ -4,11 +4,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.IdRes;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -16,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import myp2pinverst.ldgd.com.myp2pinverst.R;
+import myp2pinverst.ldgd.com.myp2pinverst.base.BasePager;
 import myp2pinverst.ldgd.com.myp2pinverst.fragment.HomeFragment;
 import myp2pinverst.ldgd.com.myp2pinverst.fragment.InvestFragment;
 import myp2pinverst.ldgd.com.myp2pinverst.fragment.MoreFragment;
@@ -25,12 +30,16 @@ import static myp2pinverst.ldgd.com.myp2pinverst.R.id.rg_bottom_tag;
 public class MainActivity extends AppCompatActivity {
 
     private RadioGroup rgBottomTag;
-    private List<Fragment> basePagers;
 
     /**
      *  当前RadioGroup选中的位置
      */
-    private int position = 0;
+    private static int position = 0;
+
+    /*
+       页面集合
+     */
+    private static List<BasePager> listPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
         rgBottomTag = (RadioGroup) findViewById(rg_bottom_tag);
 
-        basePagers = new ArrayList<>();
-        basePagers.add(new HomeFragment(this));//添加本地视频页面-0
-        basePagers.add(new InvestFragment(this));//添加本地音乐页面-1
-        basePagers.add(new HomeFragment(this));//添加网络视频页面-2
-        basePagers.add(new MoreFragment(this));//添加网络音频页面-3
+        listPager = new ArrayList<>();
+        listPager.add(new HomeFragment(this));//添加本地视频页面-0
+        listPager.add(new InvestFragment(this));//添加本地音乐页面-1
+        listPager.add(new HomeFragment(this));//添加网络视频页面-2
+        listPager.add(new MoreFragment(this));//添加网络音频页面-3
 
         //设置RadioGroup的监听
         rgBottomTag.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -85,13 +94,13 @@ public class MainActivity extends AppCompatActivity {
         // 开启事务
         FragmentTransaction ft = fm.beginTransaction();
         // 替换
-        ft.replace(R.id.fl_main_content,basePagers.get(position));
+        ft.replace(R.id.fl_main_content,new ReplaceFragment());
         // 提交事务
         ft.commit();
     }
 
 
-   /* public static class ReplaceFragment extends Fragment {
+    public static class ReplaceFragment extends Fragment {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -103,7 +112,22 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }
-    }*/
+    }
+
+    /**
+     * 根据位置得到对应的页面
+     * @return
+     */
+    private static BasePager getBasePager(){
+        BasePager basePager = listPager.get(position);
+        //  basePager.isInitData第一次打开页面加载数据
+        if(basePager != null && !basePager.isInitData){
+            basePager.initData();
+            basePager.isInitData = true;
+        }
+        return basePager;
+
+    }
 
 
     private Handler handler = new Handler() {

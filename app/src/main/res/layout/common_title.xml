@@ -12,6 +12,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/iv_title_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="10dp"
@@ -29,6 +30,7 @@
 
 
         <ImageView
+            android:id="@+id/iv_title_setting"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginRight="10dp"
