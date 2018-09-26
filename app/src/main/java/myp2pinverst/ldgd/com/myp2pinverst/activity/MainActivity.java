@@ -23,6 +23,7 @@ import myp2pinverst.ldgd.com.myp2pinverst.R;
 import myp2pinverst.ldgd.com.myp2pinverst.base.BasePager;
 import myp2pinverst.ldgd.com.myp2pinverst.fragment.HomeFragment;
 import myp2pinverst.ldgd.com.myp2pinverst.fragment.InvestFragment;
+import myp2pinverst.ldgd.com.myp2pinverst.fragment.MeFragment;
 import myp2pinverst.ldgd.com.myp2pinverst.fragment.MoreFragment;
 
 import static myp2pinverst.ldgd.com.myp2pinverst.R.id.rg_bottom_tag;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         listPager = new ArrayList<>();
         listPager.add(new HomeFragment(this));//添加本地视频页面-0
         listPager.add(new InvestFragment(this));//添加本地音乐页面-1
-        listPager.add(new HomeFragment(this));//添加网络视频页面-2
+        listPager.add(new MeFragment(this));//添加网络视频页面-2
         listPager.add(new MoreFragment(this));//添加网络音频页面-3
 
         //设置RadioGroup的监听

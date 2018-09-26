@@ -6,4 +6,8 @@
 
     <color name="title_text">#26B8EE</color>
     <color name="white">#ffffff</color>
+
+    <color name="product_detail_common">#666666</color>
+
+    <color name="home_back_unselected">#676767</color>
 </resources>
