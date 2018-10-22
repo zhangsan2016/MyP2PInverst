@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import myp2pinverst.ldgd.com.myp2pinverst.R;
-import myp2pinverst.ldgd.com.myp2pinverst.base.BasePager;
+import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
 
 /**
  * Created by ldgd on 2018/9/25.
@@ -12,7 +12,7 @@ import myp2pinverst.ldgd.com.myp2pinverst.base.BasePager;
  * 说明：
  */
 
-public class InvestFragment   extends BasePager {
+public class InvestFragment   extends BaseFragment {
 
 
     public InvestFragment(Context context) {

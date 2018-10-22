@@ -20,7 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import myp2pinverst.ldgd.com.myp2pinverst.R;
-import myp2pinverst.ldgd.com.myp2pinverst.base.BasePager;
+import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
+import myp2pinverst.ldgd.com.myp2pinverst.common.ActivityManager;
 import myp2pinverst.ldgd.com.myp2pinverst.fragment.HomeFragment;
 import myp2pinverst.ldgd.com.myp2pinverst.fragment.InvestFragment;
 import myp2pinverst.ldgd.com.myp2pinverst.fragment.MeFragment;
@@ -40,12 +41,15 @@ public class MainActivity extends AppCompatActivity {
     /*
        页面集合
      */
-    private static List<BasePager> listPager;
+    private static List<BaseFragment> listPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //将当前的activity添加到ActivityManager中
+        ActivityManager.getInstance().add(this);
 
 
 
@@ -106,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-            BasePager basePager = getBasePager();
+            BaseFragment basePager = getBasePager();
             if (basePager != null) {
                 //各个页面的视图
                 return basePager.rootView;
@@ -119,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
      * 根据位置得到对应的页面
      * @return
      */
-    private static BasePager getBasePager(){
-        BasePager basePager = listPager.get(position);
+    private static BaseFragment getBasePager(){
+        BaseFragment basePager = listPager.get(position);
         //  basePager.isInitData第一次打开页面加载数据
         if(basePager != null && !basePager.isInitData){
             basePager.initData();

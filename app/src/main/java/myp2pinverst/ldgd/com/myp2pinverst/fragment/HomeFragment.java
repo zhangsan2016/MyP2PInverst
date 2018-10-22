@@ -13,7 +13,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import java.util.List;
 
 import myp2pinverst.ldgd.com.myp2pinverst.R;
-import myp2pinverst.ldgd.com.myp2pinverst.base.BasePager;
+import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
 import myp2pinverst.ldgd.com.myp2pinverst.bean.Image;
 import myp2pinverst.ldgd.com.myp2pinverst.bean.Index;
 import myp2pinverst.ldgd.com.myp2pinverst.bean.Product;
@@ -25,7 +25,7 @@ import myp2pinverst.ldgd.com.myp2pinverst.util.UIUtils;
  * 功能：首页
  * 说明：
  */
-public class HomeFragment extends BasePager {
+public class HomeFragment extends BaseFragment {
 
     private TextView tvHomeProduct;
     private TextView tvHomeYearrate;
