@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         listPager.add(new MeFragment(this));//添加网络视频页面-2
         listPager.add(new MoreFragment(this));//添加网络音频页面-3
 
+
         //设置RadioGroup的监听
         rgBottomTag.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -86,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        // 默认选中
+        rgBottomTag.check(R.id.rb_home);
+
+
     }
 
 
@@ -99,9 +104,12 @@ public class MainActivity extends AppCompatActivity {
         // 开启事务
         FragmentTransaction ft = fm.beginTransaction();
         // 替换
-        ft.replace(R.id.fl_main_content,new ReplaceFragment());
+        ft.replace(R.id.fl_main_content,getBasePager());
         // 提交事务
         ft.commit();
+
+        fm.executePendingTransactions();
+
     }
 
 
@@ -127,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         BaseFragment basePager = listPager.get(position);
         //  basePager.isInitData第一次打开页面加载数据
         if(basePager != null && !basePager.isInitData){
-            basePager.initData();
+          //  basePager.initData();
             basePager.isInitData = true;
         }
         return basePager;

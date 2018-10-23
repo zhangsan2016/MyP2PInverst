@@ -3,6 +3,8 @@ package myp2pinverst.ldgd.com.myp2pinverst.fragment;
 import android.content.Context;
 import android.view.View;
 
+import com.loopj.android.http.RequestParams;
+
 import myp2pinverst.ldgd.com.myp2pinverst.R;
 import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
 
@@ -14,16 +16,41 @@ import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
 
 public class MoreFragment extends BaseFragment {
 
+    @Override
+    protected String getUrl() {
+        return null;
+    }
+
+    @Override
+    protected RequestParams getParams() {
+        return null;
+    }
+
+    @Override
+    protected void initTitle() {
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_more;
+    }
+
     public MoreFragment(Context context) {
         super(context);
     }
 
     @Override
     public View initView() {
-        View view = View.inflate(context, R.layout.fragment_more, null);
+        View view = View.inflate(context,getLayoutId() , null);
         String aa = null;
 
 
         return view;
+    }
+
+    @Override
+    protected void initData(String content) {
+
     }
 }

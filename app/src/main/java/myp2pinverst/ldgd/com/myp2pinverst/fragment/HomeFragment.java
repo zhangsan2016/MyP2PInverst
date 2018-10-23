@@ -2,6 +2,7 @@ package myp2pinverst.ldgd.com.myp2pinverst.fragment;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -9,6 +10,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import java.util.List;
 
@@ -29,6 +31,10 @@ public class HomeFragment extends BaseFragment {
 
     private TextView tvHomeProduct;
     private TextView tvHomeYearrate;
+    private ImageView ivTitleBack;
+    private TextView tvTitle;
+    private ImageView ivTitleSetting;
+
 
     public HomeFragment(Context context) {
         super(context);
@@ -37,15 +43,19 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public View initView() {
-        View view = View.inflate(context, R.layout.fragment_home, null);
+        View view = View.inflate(context, getLayoutId(), null);
         tvHomeProduct =  view.findViewById(R.id.tv_home_product);
         tvHomeYearrate =  view.findViewById(R.id.tv_home_yearrate);
+
+        ivTitleBack = view.findViewById(R.id.iv_title_back);
+        tvTitle = view.findViewById(R.id.tv_title);
+        ivTitleSetting = view.findViewById(R.id.iv_title_setting);
+
         return view;
     }
 
-    private Index index;
     @Override
-    public void initData() {
+    protected void initData(String content) {
 
         AsyncHttpClient client = new AsyncHttpClient();
         // 访问Url
@@ -87,9 +97,32 @@ public class HomeFragment extends BaseFragment {
             }
 
         });
-
-
     }
+
+    @Override
+    protected String getUrl() {
+        return AppNetConfig.INDEX;
+    }
+
+    @Override
+    protected RequestParams getParams() {
+        return null;
+    }
+
+    @Override
+    protected void initTitle() {
+        ivTitleBack.setVisibility(View.GONE);
+        tvTitle.setText("首页");
+        ivTitleSetting.setVisibility(View.GONE);
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_home;
+    }
+
+
+    private Index index;
 
 
 
