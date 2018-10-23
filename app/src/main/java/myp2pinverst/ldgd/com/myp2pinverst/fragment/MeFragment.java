@@ -42,8 +42,8 @@ public class MeFragment extends BaseFragment {
     }
 
     @Override
-    public View initView() {
-        View view = View.inflate(context,getLayoutId(), null);
+    public View initView(View view) {
+       // View view = View.inflate(context,getLayoutId(), null);
         return view;
     }
 

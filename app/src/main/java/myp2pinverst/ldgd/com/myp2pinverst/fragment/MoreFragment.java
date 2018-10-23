@@ -41,11 +41,8 @@ public class MoreFragment extends BaseFragment {
     }
 
     @Override
-    public View initView() {
-        View view = View.inflate(context,getLayoutId() , null);
-        String aa = null;
-
-
+    public View initView(View view) {
+     //   View view = View.inflate(context,getLayoutId() , null);
         return view;
     }
 

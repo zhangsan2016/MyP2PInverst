@@ -1,6 +1,7 @@
 package myp2pinverst.ldgd.com.myp2pinverst.fragment;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -8,8 +9,6 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import java.util.List;
@@ -42,8 +41,8 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public View initView() {
-        View view = View.inflate(context, getLayoutId(), null);
+    public View initView(View view) {
+       // View view = View.inflate(context, getLayoutId(), null);
         tvHomeProduct =  view.findViewById(R.id.tv_home_product);
         tvHomeYearrate =  view.findViewById(R.id.tv_home_yearrate);
 
@@ -54,49 +53,38 @@ public class HomeFragment extends BaseFragment {
         return view;
     }
 
+
+    private Index index;
     @Override
     protected void initData(String content) {
 
-        AsyncHttpClient client = new AsyncHttpClient();
-        // 访问Url
-        final String Url = AppNetConfig.INDEX;
-        client.post(Url, new AsyncHttpResponseHandler() {
+        if (!TextUtils.isEmpty(content)) {
+            Toast.makeText(UIUtils.getContext(), "成功！", Toast.LENGTH_SHORT).show();
+
+            index = new Index();
+
+            // 解析json数据： GSON/ FASTJSON
+            JSONObject jsonObject = JSON.parseObject(content);
+
+            // 解析json对象数组
+            String proInfo = jsonObject.getString("proInfo");
+            Product product = JSON.parseObject(proInfo, Product.class);
+
+            // 解析json数组
+            String imageArr = jsonObject.getString("imageArr");
+            List<Image> images = JSON.parseArray(imageArr, Image.class);
+            index.product = product;
+            index.images = images;
+
+            // 更新页面数据
+            tvHomeProduct.setText(product.name);
+            tvHomeYearrate.setText(product.yearRate + "%");
+        }else{
+            Toast.makeText(UIUtils.getContext(),"失败！" , Toast.LENGTH_SHORT).show();
+        }
 
 
-            @Override
-            public void onSuccess(String content) {
-                super.onSuccess(content);
 
-                Toast.makeText(UIUtils.getContext(),"成功！" , Toast.LENGTH_SHORT).show();
-
-                index = new Index();
-
-                // 解析json数据： GSON/ FASTJSON
-                JSONObject jsonObject = JSON.parseObject(content);
-
-                // 解析json对象数组
-                String proInfo = jsonObject.getString("proInfo");
-                Product product = JSON.parseObject(proInfo,Product.class);
-
-                // 解析json数组
-                String imageArr = jsonObject.getString("imageArr");
-                List<Image> images = JSON.parseArray(imageArr,Image.class);
-                index.product = product;
-                index.images = images;
-
-                // 更新页面数据
-                tvHomeProduct.setText(product.name);
-                tvHomeYearrate.setText(product.yearRate + "%");
-
-            }
-
-            @Override
-            public void onFailure(Throwable error, String content) {
-                super.onFailure(error, content);
-                Toast.makeText(UIUtils.getContext(),"失败！" , Toast.LENGTH_SHORT).show();
-            }
-
-        });
     }
 
     @Override
@@ -122,7 +110,6 @@ public class HomeFragment extends BaseFragment {
     }
 
 
-    private Index index;
 
 
 
