@@ -25,27 +25,27 @@ public class RoundProgress extends View {
     /**
      * 圆弧的颜色
      */
-    private final int roundProgressColor;
+    private  int roundProgressColor;
     /**
      * 圆弧的颜色
      */
-    private final int textColor;
+    private  int textColor;
     /**
      * 圆环的宽度
      */
-    private final float roundWidth;
+    private  float roundWidth;
     /**
      * 文本的字体大小
      */
-    private final float textSize;
+    private  float textSize;
     /**
      * 圆环的最大值
      */
-    private final int max;
+    private  int max;
     /**
      * 圆环的进度
      */
-    private final int progress;
+    private  int progress;
     /**
      * 圆环的颜色
      */
@@ -58,6 +58,15 @@ public class RoundProgress extends View {
      * 画笔
      */
     private Paint paint;
+
+
+    public void setMax(int max) {
+        this.max = max;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
 
     public RoundProgress(Context context) {
         this(context, null);
@@ -89,7 +98,7 @@ public class RoundProgress extends View {
         roundWidth = typedArray.getDimension(R.styleable.RoundProgress_roundWith, UIUtils.dp2px(10));
         textSize = typedArray.getDimension(R.styleable.RoundProgress_textSize, UIUtils.dp2px(20));
         max = typedArray.getInteger(R.styleable.RoundProgress_max, 100);
-        progress = typedArray.getInteger(R.styleable.RoundProgress_progress,  UIUtils.dp2px(10));
+        progress = typedArray.getInteger(R.styleable.RoundProgress_progress,  30);
 
 
         typedArray.recycle();
