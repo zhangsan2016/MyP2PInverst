@@ -5,6 +5,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ScrollView;
 
 import myp2pinverst.ldgd.com.myp2pinverst.util.LogUtil;
@@ -18,6 +20,7 @@ import myp2pinverst.ldgd.com.myp2pinverst.util.LogUtil;
 public class MyScrollView extends ScrollView {
 
     private View childView;
+
 
     public MyScrollView(Context context) {
         this(context, null);
@@ -47,10 +50,12 @@ public class MyScrollView extends ScrollView {
     private int lastY;
     //用于记录临界状态的左、上、右、下
     private Rect normal = new Rect();
+   // 动画是否结束
+    private boolean isFinishAnimation = true;
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
 
-        if (childView == null) {
+        if (childView == null || !isFinishAnimation) {
             return super.onTouchEvent(ev);
         }
 
@@ -68,15 +73,50 @@ public class MyScrollView extends ScrollView {
                 int dy = eventY - lastY;
 
                 if (isNeedMove()) {
+                    LogUtil.e(" childView.getBottom() = " +  childView.getBottom());
                      // 使用 normal.isEmpty() 方法作判断，使得临界值只保留一次
                     if(normal.isEmpty()){
                         //记录了childView的临界状态的左、上、右、下
                         normal.set(childView.getLeft(), childView.getTop(), childView.getRight(), childView.getBottom());
+                        LogUtil.e(normal.left + ":"  + normal.right + ":" + normal.right + ":" + normal.bottom);
                     }
                     //重新布局
                     childView.layout(childView.getLeft(), childView.getTop() + dy / 2, childView.getRight(), childView.getBottom() + dy / 2);
                 }
                 lastY = eventY;//重新赋值
+                break;
+            case MotionEvent.ACTION_UP:
+
+
+                if(isNeedAnimation()){
+                    // 使用平移动画
+                    int translateY = childView.getBottom() - normal.bottom;
+                    TranslateAnimation translateAnimation = new TranslateAnimation(0,0,0,-translateY);
+                    translateAnimation.setDuration(2000);
+                    translateAnimation.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+                            isFinishAnimation = false;
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            isFinishAnimation = true;
+                            //清除动画
+                            childView.clearAnimation();
+                            //恢复布局
+                            childView.layout(normal.left, normal.top, normal.right, normal.bottom);
+                            normal.setEmpty();
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+                    childView.setAnimation(translateAnimation);
+                }
+
                 break;
 
         }
@@ -101,4 +141,14 @@ public class MyScrollView extends ScrollView {
         //其他处在临界范围内的，返回false。即表示，仍按照ScrollView的方式处理
         return false;
     }
+
+
+    //判断是否需要执行平移动画
+    private boolean isNeedAnimation() {
+        return !normal.isEmpty();
+
+    }
+
+
+
 }
