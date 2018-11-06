@@ -22,7 +22,6 @@
     </style>
 
 
-
     <!--自定义viewpagerIndicator样式-->
     <style name="StyledIndicators" parent="@android:style/Theme.Light">
         <item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>
@@ -46,7 +45,10 @@
         <item name="android:textColor">@drawable/selector_tabtext</item>
     </style>
 
-
+    <style name="produc_list_text">
+        <item name="android:textColor">@color/product_detail_common</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 
 
 </resources>

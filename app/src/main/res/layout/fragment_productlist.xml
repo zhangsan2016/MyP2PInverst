@@ -5,9 +5,14 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:layout_width="wrap_content"
+    <myp2pinverst.ldgd.com.myp2pinverst.ui.MyTextView
+        android:id="@+id/tv_product_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="但当我使用的时候还是不行，于是我又把网上的代码直接粘过来，好使了。。。我只好一行一行检查代码，看哪里跟人家不一样，后来发现只有一处不同。 " />
+        android:text="硅谷金融壕运当头，首投返现最高达188元"
+        android:textSize="25sp"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:textColor="@color/round_red_common"/>
 
 </LinearLayout>

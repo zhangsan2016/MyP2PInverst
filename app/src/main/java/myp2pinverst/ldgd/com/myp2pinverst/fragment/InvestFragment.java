@@ -98,8 +98,10 @@ public class InvestFragment extends BaseFragment {
 
         //添加到集合中
         fragmentList.add(productListFragment);
-        fragmentList.add(productRecommondFragment);
         fragmentList.add(productHotFragment);
+        fragmentList.add(productRecommondFragment);
+
+
     }
 
 
