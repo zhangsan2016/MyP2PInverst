@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="但当我使用的时候还是不行，于是我又把网上的代码直接粘过来，好使了。。。我只好一行一行检查代码，看哪里跟人家不一样，后来发现只有一处不同2。 " />
+
+</LinearLayout>

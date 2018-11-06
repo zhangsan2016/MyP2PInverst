@@ -9,19 +9,14 @@ import myp2pinverst.ldgd.com.myp2pinverst.R;
 import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
 
 /**
- * Created by ldgd on 2018/11/5.
- * 功能：产品列表
+ * Created by ldgd on 2018/11/6.
+ * 功能：
  * 说明：
  */
 
-public class ProductListFragment   extends BaseFragment {
-
-
-
-    public ProductListFragment(Context context) {
+public class ProductRecommondFragment extends BaseFragment {
+    public ProductRecommondFragment(Context context) {
         super(context);
-
-
     }
 
     @Override
@@ -41,7 +36,7 @@ public class ProductListFragment   extends BaseFragment {
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_productlist;
+        return R.layout.fragment_productrecommond;
     }
 
     @Override

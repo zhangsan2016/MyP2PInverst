@@ -6,9 +6,9 @@ import android.os.Message;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +29,7 @@ import myp2pinverst.ldgd.com.myp2pinverst.fragment.MoreFragment;
 
 import static myp2pinverst.ldgd.com.myp2pinverst.R.id.rg_bottom_tag;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
 
     private RadioGroup rgBottomTag;
 
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         // 提交事务
         ft.commit();
 
-        fm.executePendingTransactions();
+     //   fm.executePendingTransactions();
 
     }
 

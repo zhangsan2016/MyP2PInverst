@@ -41,6 +41,7 @@ public abstract class BaseFragment extends Fragment {
 
             @Override
             protected void onSuccss(ResultState resultState, View view_success) {
+
                 rootView = initView(view_success);
                 initTitle();
                 initData(resultState.getContent());
