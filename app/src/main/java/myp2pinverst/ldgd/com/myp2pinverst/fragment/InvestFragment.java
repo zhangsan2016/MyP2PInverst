@@ -92,9 +92,10 @@ public class InvestFragment extends BaseFragment {
         if(fragmentList!= null || fragmentList.size() > 0){
             fragmentList.clear();
         }
-        ProductListFragment productListFragment = new ProductListFragment(context);
-        ProductRecommondFragment productRecommondFragment = new ProductRecommondFragment(context);
         ProductHotFragment productHotFragment = new ProductHotFragment(context);
+        ProductRecommondFragment productRecommondFragment = new ProductRecommondFragment(context);
+        ProductListFragment productListFragment = new ProductListFragment(context);
+
         //添加到集合中
         fragmentList.add(productListFragment);
         fragmentList.add(productRecommondFragment);

@@ -2,6 +2,7 @@ package myp2pinverst.ldgd.com.myp2pinverst.fragment.invest;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
 
@@ -15,6 +16,8 @@ import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
  */
 
 public class ProductHotFragment extends BaseFragment {
+    private TextView productTitle;
+
     public ProductHotFragment(Context context) {
         super(context);
     }
@@ -41,11 +44,16 @@ public class ProductHotFragment extends BaseFragment {
 
     @Override
     public View initView(View view) {
+       productTitle = view.findViewById(R.id.tv_product_title);
         return null;
     }
 
     @Override
     protected void initData(String content) {
+ /*       productTitle.setFocusable(true);
+        productTitle.setFocusableInTouchMode(true);
+        productTitle.requestFocus();*/
+
 
     }
 }
