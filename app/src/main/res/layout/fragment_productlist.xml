@@ -15,4 +15,13 @@
         android:ellipsize="marquee"
         android:textColor="@color/round_red_common"/>
 
+
+    <ListView
+        android:id="@+id/lv_product_hot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+
 </LinearLayout>

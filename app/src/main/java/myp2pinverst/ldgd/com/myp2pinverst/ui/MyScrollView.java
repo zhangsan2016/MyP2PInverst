@@ -74,6 +74,7 @@ public class MyScrollView extends ScrollView {
 
                 if (isNeedMove()) {
                     LogUtil.e(" childView.getBottom() = " +  childView.getBottom());
+                    LogUtil.e("normal.bottom = " +  normal.bottom);
                      // 使用 normal.isEmpty() 方法作判断，使得临界值只保留一次
                     if(normal.isEmpty()){
                         //记录了childView的临界状态的左、上、右、下
@@ -134,7 +135,7 @@ public class MyScrollView extends ScrollView {
         int dy = childMeasuredHeight - scrollViewMeasuredHeight;
         // //获取用户在y轴方向上的偏移量 （上 + 下 -）
         int scrollY = this.getScrollY();
-        LogUtil.e("scrollY = " + scrollY + "   " +  "dy == " + dy);
+  //      LogUtil.e("scrollY = " + scrollY + "   " +  "dy == " + dy);
         if(scrollY <= 0 || scrollY >= dy ){
             return true;//按照我们自定义的MyScrollView的方式处理
         }

@@ -10,11 +10,13 @@ import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
 
 /**
  * Created by ldgd on 2018/11/6.
- * 功能：
+ * 功能： 推荐产品Frament
  * 说明：
  */
 
 public class ProductRecommondFragment extends BaseFragment {
+
+
     public ProductRecommondFragment(Context context) {
         super(context);
     }
@@ -41,6 +43,10 @@ public class ProductRecommondFragment extends BaseFragment {
 
     @Override
     public View initView(View view) {
+
+
+
+
         return null;
     }
 

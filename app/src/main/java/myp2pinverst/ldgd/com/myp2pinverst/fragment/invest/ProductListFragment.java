@@ -2,11 +2,17 @@ package myp2pinverst.ldgd.com.myp2pinverst.fragment.invest;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.loopj.android.http.RequestParams;
 
 import myp2pinverst.ldgd.com.myp2pinverst.R;
 import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
+import myp2pinverst.ldgd.com.myp2pinverst.common.AppNetConfig;
+import myp2pinverst.ldgd.com.myp2pinverst.util.LogUtil;
 
 /**
  * Created by ldgd on 2018/11/5.
@@ -16,6 +22,8 @@ import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
 
 public class ProductListFragment   extends BaseFragment {
 
+    private TextView productTitle;
+    private ListView lvProductHot;
 
 
     public ProductListFragment(Context context) {
@@ -26,7 +34,7 @@ public class ProductListFragment   extends BaseFragment {
 
     @Override
     protected String getUrl() {
-        return null;
+        return  AppNetConfig.PRODUCT;
     }
 
     @Override
@@ -46,11 +54,17 @@ public class ProductListFragment   extends BaseFragment {
 
     @Override
     public View initView(View view) {
+        productTitle = view.findViewById(R.id.tv_product_title);
+        lvProductHot = view.findViewById(R.id.lv_product_hot);
+
         return null;
     }
 
     @Override
     protected void initData(String content) {
+
+        JSONObject jsonObject = JSON.parseObject(content);
+        LogUtil.e("jsonObject = " + jsonObject.toString());
 
     }
 }

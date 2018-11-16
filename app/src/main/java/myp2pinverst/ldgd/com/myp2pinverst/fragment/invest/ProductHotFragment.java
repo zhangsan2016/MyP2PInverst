@@ -2,7 +2,6 @@ package myp2pinverst.ldgd.com.myp2pinverst.fragment.invest;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
 
@@ -11,12 +10,12 @@ import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
 
 /**
  * Created by ldgd on 2018/11/6.
- * 功能：
+ * 功能：  热门产品Frament
  * 说明：
  */
 
 public class ProductHotFragment extends BaseFragment {
-    private TextView productTitle;
+
 
     public ProductHotFragment(Context context) {
         super(context);
@@ -44,7 +43,8 @@ public class ProductHotFragment extends BaseFragment {
 
     @Override
     public View initView(View view) {
-       productTitle = view.findViewById(R.id.tv_product_title);
+
+
         return null;
     }
 
