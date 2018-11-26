@@ -9,8 +9,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.loopj.android.http.RequestParams;
 
+import java.util.List;
+
 import myp2pinverst.ldgd.com.myp2pinverst.R;
 import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
+import myp2pinverst.ldgd.com.myp2pinverst.bean.Product;
 import myp2pinverst.ldgd.com.myp2pinverst.common.AppNetConfig;
 import myp2pinverst.ldgd.com.myp2pinverst.util.LogUtil;
 
@@ -24,6 +27,7 @@ public class ProductListFragment   extends BaseFragment {
 
     private TextView productTitle;
     private ListView lvProductHot;
+    private List<Product> productList;
 
 
     public ProductListFragment(Context context) {
@@ -64,7 +68,29 @@ public class ProductListFragment   extends BaseFragment {
     protected void initData(String content) {
 
         JSONObject jsonObject = JSON.parseObject(content);
-        LogUtil.e("jsonObject = " + jsonObject.toString());
+
+        boolean success = jsonObject.getBoolean("success");
+        if(success){
+            String data = jsonObject.getString("data");
+            //获取集合数据
+            productList = JSON.parseArray(data, Product.class);
+
+            //方式一：没有抽取
+//            ProductAdapter productAdapter = new ProductAdapter(productList);
+//            lvProductList.setAdapter(productAdapter);//显示列表
+
+//            //方式二：抽取了，但是抽取力度小 （可以作为选择）
+//            ProductAdapter1 productAdapter1 = new ProductAdapter1(productList);
+//            lvProductList.setAdapter(productAdapter1);//显示列表
+
+            //方式三：抽取了，但是没有使用ViewHolder，getView()优化的不够
+//            ProductAdapter2 productAdapter2 = new ProductAdapter2(productList);
+//            lvProductList.setAdapter(productAdapter2);//显示列表
+
+            //方式四：抽取了，最好的方式.（可以作为选择）
+            ProductAdapter3 productAdapter3 = new ProductAdapter3(productList);
+            lvProductList.setAdapter(productAdapter3);//显示列表
+        }
 
     }
 }

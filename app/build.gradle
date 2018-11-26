@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 26
@@ -30,4 +31,8 @@ dependencies {
     compile files('libs/android-async-http-master.jar')
     compile files('libs/fastjson-1.2.4.jar')
     compile project(':ViewPagerIndicator')
+
+
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
