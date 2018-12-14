@@ -12,10 +12,10 @@ import com.loopj.android.http.RequestParams;
 import java.util.List;
 
 import myp2pinverst.ldgd.com.myp2pinverst.R;
+import myp2pinverst.ldgd.com.myp2pinverst.adapter.ProductAdapter3;
 import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
 import myp2pinverst.ldgd.com.myp2pinverst.bean.Product;
 import myp2pinverst.ldgd.com.myp2pinverst.common.AppNetConfig;
-import myp2pinverst.ldgd.com.myp2pinverst.util.LogUtil;
 
 /**
  * Created by ldgd on 2018/11/5.
@@ -26,7 +26,7 @@ import myp2pinverst.ldgd.com.myp2pinverst.util.LogUtil;
 public class ProductListFragment   extends BaseFragment {
 
     private TextView productTitle;
-    private ListView lvProductHot;
+    private ListView lvProductList;
     private List<Product> productList;
 
 
@@ -59,7 +59,7 @@ public class ProductListFragment   extends BaseFragment {
     @Override
     public View initView(View view) {
         productTitle = view.findViewById(R.id.tv_product_title);
-        lvProductHot = view.findViewById(R.id.lv_product_hot);
+        lvProductList = view.findViewById(R.id.lv_product_list);
 
         return null;
     }
