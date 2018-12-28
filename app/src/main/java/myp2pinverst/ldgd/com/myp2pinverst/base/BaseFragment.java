@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.loopj.android.http.RequestParams;
 
+import butterknife.ButterKnife;
 import myp2pinverst.ldgd.com.myp2pinverst.ui.LoadingPage;
 
 /**
@@ -26,7 +27,6 @@ public abstract class BaseFragment extends Fragment {
     public View rootView;
 
     private LoadingPage loadingPage;
-    private int layoutId;
 
     @Nullable
     @Override
@@ -41,7 +41,7 @@ public abstract class BaseFragment extends Fragment {
 
             @Override
             protected void onSuccss(ResultState resultState, View view_success) {
-
+                ButterKnife.bind(BaseFragment.this, view_success);
                 rootView = initView(view_success);
                 initTitle();
                 initData(resultState.getContent());

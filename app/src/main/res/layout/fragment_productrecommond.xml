@@ -5,16 +5,17 @@
     android:orientation="vertical">
 
 
-
-
-    <myp2pinverst.ldgd.com.myp2pinverst.ui.MyTextView
-        android:id="@+id/tv_product_title"
+<!--    <myp2pinverst.ldgd.com.myp2pinverst.ui.randomLayout.StellarMap
+        android:id="@+id/stellarMap"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="sdfsdfsadfsdf"
-        android:textSize="25sp"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:textColor="@color/round_red_common"/>
+        android:layout_height="match_parent"
+  />-->
+
+
+    <myp2pinverst.ldgd.com.myp2pinverst.ui.randomLayout.StellarMap
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/stellar_map"
+        ></myp2pinverst.ldgd.com.myp2pinverst.ui.randomLayout.StellarMap>
 
 </LinearLayout>
