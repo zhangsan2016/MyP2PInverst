@@ -2,15 +2,19 @@ package myp2pinverst.ldgd.com.myp2pinverst.fragment.invest;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
 
+import java.util.Random;
+
 import butterknife.BindView;
 import myp2pinverst.ldgd.com.myp2pinverst.R;
 import myp2pinverst.ldgd.com.myp2pinverst.base.BaseFragment;
 import myp2pinverst.ldgd.com.myp2pinverst.ui.randomLayout.StellarMap;
+import myp2pinverst.ldgd.com.myp2pinverst.util.UIUtils;
 
 /**
  * Created by ldgd on 2018/11/6.
@@ -32,6 +36,8 @@ public class ProductRecommondFragment extends BaseFragment {
     //声明两个子数组
     private String[] oneDatas = new String[datas.length / 2];
     private String[] twoDatas = new String[datas.length - datas.length / 2];
+
+    private Random random = new Random();
 
     public ProductRecommondFragment(Context context) {
         super(context);
@@ -79,6 +85,14 @@ public class ProductRecommondFragment extends BaseFragment {
         StellarAdapter stellarAdapter = new StellarAdapter();
         stellarMap.setAdapter(stellarAdapter);
 
+
+        int left = UIUtils.dp2px(10);
+        int top = UIUtils.dp2px(10);
+        int right = UIUtils.dp2px(10);
+        int bottom = UIUtils.dp2px(10);
+
+        stellarMap.setInnerPadding(left,top,right,bottom);
+
         //必须调用如下的两个方法，否则stellarMap不能显示数据
         //设置显示的数据在x轴、y轴方向上的稀疏度
         stellarMap.setRegularity(5, 7);
@@ -113,13 +127,31 @@ public class ProductRecommondFragment extends BaseFragment {
         @Override
         public View getView(int group, int position, View convertView) {
 
-            TextView textView = new TextView(getActivity());
+            //设置属性
+            //设置文本的内容
+            final TextView textView = new TextView(getActivity());
             if (group == 0) {
                 textView.setText(oneDatas[position]);
             } else {
                 textView.setText(twoDatas[position]);
             }
 
+
+            //设置字体的大小
+            textView.setTextSize(UIUtils.dp2px(5) + UIUtils.dp2px(random.nextInt(10)));
+            //设置字体的颜色
+            int red = random.nextInt(211);//00 ~ ff ; 0 ~ 255
+            int green = random.nextInt(211);
+            int blue = random.nextInt(211);
+            textView.setTextColor(Color.rgb(red, green, blue));
+
+            //设置TextView的点击事件
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    UIUtils.toast(textView.getText().toString(),false);
+                }
+            });
 
             return textView;
         }

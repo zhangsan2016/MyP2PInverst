@@ -3,6 +3,7 @@ package myp2pinverst.ldgd.com.myp2pinverst.util;
 import android.content.Context;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Toast;
 
 import myp2pinverst.ldgd.com.myp2pinverst.appliction.MyApplication;
 
@@ -63,5 +64,9 @@ public class UIUtils {
         int currentThreadId = android.os.Process.myTid();
         return MyApplication.mainThreadId == currentThreadId;
 
+    }
+
+    public static void toast(String message,boolean isLengthLong){
+        Toast.makeText(UIUtils.getContext(), message,isLengthLong? Toast.LENGTH_LONG : Toast.LENGTH_SHORT).show();
     }
 }
