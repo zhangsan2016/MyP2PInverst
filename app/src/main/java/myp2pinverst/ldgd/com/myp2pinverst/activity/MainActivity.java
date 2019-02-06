@@ -38,6 +38,8 @@ public class MainActivity extends FragmentActivity {
      */
     private static int position = 0;
 
+
+
     /*
        页面集合
      */
