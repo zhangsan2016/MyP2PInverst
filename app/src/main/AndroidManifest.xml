@@ -37,6 +37,9 @@
             android:name=".activity.MainActivity"
             android:theme="@style/StyledIndicators"></activity>
 
+        <activity
+            android:name=".activity.UserInfoActivity"></activity>
+
         <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
