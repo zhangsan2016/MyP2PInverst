@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 
+import com.mob.MobSDK;
+
 /**
  * Created by shkstart on 2016/12/2 0002.
  */
@@ -26,5 +28,10 @@ public class MyApplication extends Application {
 
         //设置未捕获异常的处理器
  //      CrashHandler.getInstance().init();
+
+
+       // MobSDK.init(this);
+       // 通过代码注册你的AppKey和AppSecret
+        MobSDK.init(context, "2a16e6c090334", "b6d31aa0b79e99e8e88729fbc9631cd4");
     }
 }
