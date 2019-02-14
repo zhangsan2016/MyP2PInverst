@@ -36,6 +36,8 @@
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/StyledIndicators"></activity>
+        <activity android:name=".activity.GestureEditActivity" />
+        <activity android:name=".activity.GestureVerifyActivity" />
 
         <activity
             android:name=".activity.UserInfoActivity"></activity>
